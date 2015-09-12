@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -37,10 +38,49 @@ namespace awesomeAlphabetThingy
         public MainPage()
         {
             this.InitializeComponent();
-
+               SetupBackground();
             Setup();
             Intro();
         }
+          public void SetupBackground()
+          {
+               BitmapImage background;
+               ImageBrush brush = new ImageBrush();
+               brush.Stretch = Stretch.UniformToFill;
+               brush.AlignmentX = AlignmentX.Left;
+               brush.AlignmentY = AlignmentY.Top;
+               int christmasM =  12 ;
+               int halloweenM =  11 ;
+               int[] winterM = { 1, 2 };
+               int[] autumnM = { 9, 10 };
+               int[] summerM = { 6, 7, 8 };
+               int[] springM = { 3, 4, 5 };
+
+               int month = DateTime.Today.Month;
+               
+               background = new BitmapImage(new Uri(BaseUri, "/Seasons/christmas.jpg"));
+               
+               if(month == halloweenM)
+               {
+
+               }
+               else if (winterM.Contains(month))
+               {
+                    background = new BitmapImage(new Uri(BaseUri, "/Seasons/winter.jpg"));
+               }
+               else if (autumnM.Contains(month))
+               {
+                    background = new BitmapImage(new Uri(BaseUri, "/Seasons/autumn.jpg"));
+               }
+               else if (summerM.Contains(month))
+               {
+                    background = new BitmapImage(new Uri(BaseUri, "/Seasons/summer.jpg"));
+               }
+               brush.ImageSource = background;
+               BackgroundImg.Background = brush;
+
+
+          }
         public async void Intro()
         {
             await Task.Delay(2000);
@@ -89,13 +129,13 @@ namespace awesomeAlphabetThingy
                 keys.Add(pair.Key);
             }
         }
-        public async void Say(string letter)
-        {
-            var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
-            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(letter);
-            mediaElement.SetSource(stream, stream.ContentType);
-            mediaElement.Play();
-        }
+          public async void Say(string letter)
+          {
+               var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
+               Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(letter);
+               mediaElement.SetSource(stream, stream.ContentType);
+               mediaElement.Play();
+          }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -167,11 +207,11 @@ namespace awesomeAlphabetThingy
 
             }
 
+
             await Task.Delay(3000);
             this.currentlyPlaying = false;
             Next();
         }
-    
 
     private void playAgainButton_Click(object sender, RoutedEventArgs e)
         {

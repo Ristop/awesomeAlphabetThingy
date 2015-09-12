@@ -91,7 +91,11 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Content Include="christmas.jpg" />
+    <Content Include="Seasons\christmas.jpg" />
+    <Content Include="Seasons\autumn.jpg" />
+    <Content Include="Seasons\summer.jpg" />
+    <Content Include="Seasons\winter.jpeg" />
+    <Content Include="Seasons\winter.jpg" />
     <Content Include="sounds\a.mp3" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

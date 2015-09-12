@@ -78,14 +78,77 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ButtonStyle1" TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
+            <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource SystemControlForegroundTransparentBrush}"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}"/>
+            <Setter Property="Padding" Value="8,4,8,4"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="RootGrid" CornerRadius="45" Background="White">
+                            <Grid.BorderBrush>
+                                <ImageBrush Stretch="Fill"/>
+                            </Grid.BorderBrush>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseHighBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightTransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseHighBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledTransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" FontWeight="Bold" Opacity="0.97"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
-    
-    
-    <Grid>
-        <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="christmas.jpg" AlignmentY="Top" AlignmentX="Left"/>
-        </Grid.Background>
-        <Grid.RowDefinitions>
+
+
+     <Grid Name="BackgroundImg">
+          <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -96,32 +159,32 @@
             <Grid MaxWidth="700">
 
                 <Button x:Name="playAgainButton" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Repeat" Click="playAgainButton_Click"/>
-                <Button x:Name="buttonA" Click="Button_Click" Content="A" HorizontalAlignment="Left" Margin="39,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonB" Click="Button_Click" Content="B" HorizontalAlignment="Left" Margin="79,0,0,157" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonC" Click="Button_Click" Content="C" HorizontalAlignment="Left" Margin="119,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonD" Click="Button_Click" Content="D" HorizontalAlignment="Stretch" Margin="159,0,166,157" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
-        <Button x:Name="buttonE" Click="Button_Click" Content="E" HorizontalAlignment="Left" Margin="199,0,0,157" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonF" Click="Button_Click" Content="F" HorizontalAlignment="Left" Margin="239,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonG" Click="Button_Click" Content="G" HorizontalAlignment="Left" Margin="279,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonH" Click="Button_Click" Content="H" HorizontalAlignment="Left" Margin="39,0,0,120" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonI" Click="Button_Click" Content="I" HorizontalAlignment="Left" Margin="79,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonJ" Click="Button_Click" Content="J" HorizontalAlignment="Left" Margin="119,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonK" Click="Button_Click" Content="K" HorizontalAlignment="Stretch" Margin="159,0,166,120" VerticalAlignment="Bottom" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
-        <Button x:Name="buttonL" Click="Button_Click" Content="L" HorizontalAlignment="Left" Margin="199,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonM" Click="Button_Click" Content="M" HorizontalAlignment="Left" Margin="239,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonN" Click="Button_Click" Content="N" HorizontalAlignment="Left" Margin="279,0,0,120" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonO" Click="Button_Click" Content="O" HorizontalAlignment="Left" Margin="39,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonP" Click="Button_Click" Content="P" HorizontalAlignment="Left" Margin="79,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonQ" Click="Button_Click" Content="Q" HorizontalAlignment="Left" Margin="119,0,0,83" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonR" Click="Button_Click" Content="R" HorizontalAlignment="Stretch" Margin="159,0,166,83" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
-        <Button x:Name="buttonS" Click="Button_Click" Content="S" HorizontalAlignment="Left" Margin="199,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonT" Click="Button_Click" Content="T" HorizontalAlignment="Left" Margin="239,0,0,83" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonU" Click="Button_Click" Content="U" HorizontalAlignment="Left" Margin="279,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonV" Click="Button_Click" Content="V" HorizontalAlignment="Left" Margin="79,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonX" Click="Button_Click" Content="X" HorizontalAlignment="Stretch" Margin="159,0,166,46" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
-        <Button x:Name="buttonY" Click="Button_Click" Content="Y" HorizontalAlignment="Left" Margin="199,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonZ" Click="Button_Click" Content="Z" HorizontalAlignment="Left" Margin="239,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonW" Click="Button_Click" Content="W" HorizontalAlignment="Left" Margin="119,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+                <Button x:Name="buttonA" Click="Button_Click" Content="A" HorizontalAlignment="Left" Margin="39,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+        <Button x:Name="buttonB" Click="Button_Click" Content="B" HorizontalAlignment="Left" Margin="79,0,0,157" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonC" Click="Button_Click" Content="C" HorizontalAlignment="Left" Margin="119,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonD" Click="Button_Click" Content="D" HorizontalAlignment="Stretch" Margin="159,0,166,157" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonE" Click="Button_Click" Content="E" HorizontalAlignment="Left" Margin="199,0,0,157" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonF" Click="Button_Click" Content="F" HorizontalAlignment="Left" Margin="239,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonG" Click="Button_Click" Content="G" HorizontalAlignment="Left" Margin="279,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonH" Click="Button_Click" Content="H" HorizontalAlignment="Left" Margin="39,0,0,120" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonI" Click="Button_Click" Content="I" HorizontalAlignment="Left" Margin="79,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonJ" Click="Button_Click" Content="J" HorizontalAlignment="Left" Margin="119,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonK" Click="Button_Click" Content="K" HorizontalAlignment="Stretch" Margin="159,0,166,120" VerticalAlignment="Bottom" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonL" Click="Button_Click" Content="L" HorizontalAlignment="Left" Margin="199,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonM" Click="Button_Click" Content="M" HorizontalAlignment="Left" Margin="239,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonN" Click="Button_Click" Content="N" HorizontalAlignment="Left" Margin="279,0,0,120" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonO" Click="Button_Click" Content="O" HorizontalAlignment="Left" Margin="39,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonP" Click="Button_Click" Content="P" HorizontalAlignment="Left" Margin="79,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonQ" Click="Button_Click" Content="Q" HorizontalAlignment="Left" Margin="119,0,0,83" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonR" Click="Button_Click" Content="R" HorizontalAlignment="Stretch" Margin="159,0,166,83" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonS" Click="Button_Click" Content="S" HorizontalAlignment="Left" Margin="199,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonT" Click="Button_Click" Content="T" HorizontalAlignment="Left" Margin="239,0,0,83" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonU" Click="Button_Click" Content="U" HorizontalAlignment="Left" Margin="279,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonV" Click="Button_Click" Content="V" HorizontalAlignment="Left" Margin="79,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonX" Click="Button_Click" Content="X" HorizontalAlignment="Stretch" Margin="159,0,166,46" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonY" Click="Button_Click" Content="Y" HorizontalAlignment="Left" Margin="199,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+                <Button x:Name="buttonZ" Click="Button_Click" Content="Z" HorizontalAlignment="Left" Margin="239,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
+        <Button x:Name="buttonW" Click="Button_Click" Content="W" HorizontalAlignment="Left" Margin="119,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2" Style="{StaticResource ButtonStyle1}"/>
             </Grid>
         </Viewbox>
         
