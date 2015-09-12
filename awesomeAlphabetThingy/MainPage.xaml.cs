@@ -31,6 +31,9 @@ namespace awesomeAlphabetThingy
         List<char> keys;
         MediaElement mediaElement = new MediaElement();
         char current;
+        int counter = 0;
+        Boolean playAgain;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -84,7 +87,7 @@ namespace awesomeAlphabetThingy
             await Task.Delay(3000);
             Say("Let us start learning some letters together!");
             await Task.Delay(3000);
-            Say("Let us begin!");
+            Say("Let's begin!");
             await Task.Delay(2000);
             Next();
         }
@@ -92,8 +95,14 @@ namespace awesomeAlphabetThingy
         {
             Random rnd = new Random();
             int index = rnd.Next(0, keys.Count - 1);
-            this.current = keys[index];
             letterBox.Text = "?";
+            this.current = keys[index];
+            Play(current);
+        }
+
+        public async void Play(char current)
+        {
+
             var mp3 = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///sounds/" + this.current.ToString() + ".mp3"));
             var player = new AudioPlayer();
             await player.LoadFileAsync(mp3);
@@ -101,6 +110,7 @@ namespace awesomeAlphabetThingy
             await Task.Delay(2000);
 
         }
+
         public void Setup()
         {
             this.keys = new List<char>();
@@ -123,34 +133,84 @@ namespace awesomeAlphabetThingy
                mediaElement.Play();
           }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
-            var button = (Button) sender;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
             checkLetter(button.Content.ToString().ToCharArray()[0]);
 
         }
 
-        public async void checkLetter(char letter) {
+        public async void checkLetter(char letter)
+        {
+
             letterBox.Text = letter.ToString();
-            if(letter == Char.ToUpper(current)) {
-                Say("Correct!");
-                await Task.Delay(3000);
+            if (letter == Char.ToUpper(current))
+            {
                 if (letters[current] == 1)
                 {
                     letters.Remove(current);
                     keys.Remove(current);
                 }
-                else
-                {
+                else {
                     letters[current] -= 1;
                 }
-                Next();
-            }else {
-                Say("Lets try this one again");
+                if (this.counter <= 0)
+                {
+                    this.counter = 1;
+                    Say("Good!");
+                }
+                else if (this.counter == 1)
+                {
+                    this.counter++;
+                    Say("Super!");
+                }
+                else if (this.counter > 3)
+                {
+                    this.counter++;
+                    Say("Magnificent!");
+                }
+                else
+                {
+                    this.counter++;
+                    Say("You are on a roll!");
+                }
+            }
+            else {
+                if (this.counter >= 0)
+                {
+                    this.counter = -1;
+                    Say("Incorrect!");
+                }
+                else if (this.counter == -1)
+                {
+                    this.counter--;
+                    Say("You have to keep practicing");
+                }
+                else if (this.counter < -3)
+                {
+                    this.counter--;
+                    Say("I will help you get these right");
+                }
+                else
+                {
+                    this.counter--;
+                    Say("Don't be sad! You will get better");
+                }
+
+            }
+
                 await Task.Delay(3000);
                 Next();
             }
+    
+
+    private void playAgainButton_Click(object sender, RoutedEventArgs e)
+        {
+        Play(current);
         }
     }
+
+
     public class AudioPlayer
     {
         private AudioGraph _graph;
