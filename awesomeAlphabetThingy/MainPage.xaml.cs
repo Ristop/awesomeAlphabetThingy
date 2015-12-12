@@ -137,7 +137,7 @@ namespace awesomeAlphabetThingy
                 else if (this.counter < -3)
                 {
                     this.counter--;
-                    Say("Let me help you get these right");
+                    Say("I will help you get these right");
                 }
                 else
                 {
