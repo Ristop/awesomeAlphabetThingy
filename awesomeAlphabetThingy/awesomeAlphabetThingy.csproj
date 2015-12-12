@@ -89,9 +89,20 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="sounds\a.mp3" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="sounds\q.mp3" />
+    <Content Include="sounds\r.mp3" />
+    <Content Include="sounds\s.mp3" />
+    <Content Include="sounds\t.mp3" />
+    <Content Include="sounds\u.mp3" />
+    <Content Include="sounds\v.mp3" />
+    <Content Include="sounds\w.mp3" />
+    <Content Include="sounds\x.mp3" />
+    <Content Include="sounds\y.mp3" />
+    <Content Include="sounds\z.mp3" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +121,21 @@
     <None Include="awesomeAlphabetThingy_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sounds\b.mp3" />
+    <Content Include="sounds\c.mp3" />
+    <Content Include="sounds\d.mp3" />
+    <Content Include="sounds\e.mp3" />
+    <Content Include="sounds\f.mp3" />
+    <Content Include="sounds\g.mp3" />
+    <Content Include="sounds\h.mp3" />
+    <Content Include="sounds\i.mp3" />
+    <Content Include="sounds\j.mp3" />
+    <Content Include="sounds\k.mp3" />
+    <Content Include="sounds\l.mp3" />
+    <Content Include="sounds\m.mp3" />
+    <Content Include="sounds\n.mp3" />
+    <Content Include="sounds\o.mp3" />
+    <Content Include="sounds\p.mp3" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

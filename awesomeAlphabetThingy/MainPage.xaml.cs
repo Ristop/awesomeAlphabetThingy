@@ -39,7 +39,7 @@ namespace awesomeAlphabetThingy
             Say("Hello and welcome to the awesome alphabet thingy!");
             await Task.Delay(3000);
             Say("Let us start learning some letters together!");
-            await Task.Delay(2000);
+            await Task.Delay(3000);
             Say("Let us begin!");
             await Task.Delay(2000);
         }
