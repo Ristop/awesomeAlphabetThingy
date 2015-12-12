@@ -23,7 +23,7 @@ namespace awesomeAlphabetThingy
     public sealed partial class MainPage : Page
     {
         Dictionary<char, int> letters;
-
+          MediaElement mediaElement = new MediaElement();
         public MainPage()
         {
             this.InitializeComponent();
@@ -43,8 +43,17 @@ namespace awesomeAlphabetThingy
             {'u', 4}, {'v', 4}, {'w', 4}, {'x', 4}, {'y', 4}, {'z', 4}
         };
         }
+          private async void Button_Click(string letter)
+          {
+               var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
+               Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(letter);
 
 
-        
-    }
+               mediaElement.SetSource(stream, stream.ContentType);
+               mediaElement.Play();
+          }
+
+
+
+     }
     }
