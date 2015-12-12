@@ -33,6 +33,7 @@ namespace awesomeAlphabetThingy
         char current;
         int counter = 0;
         Boolean playAgain;
+        Boolean currentlyPlaying = true; 
 
         public MainPage()
         {
@@ -89,6 +90,7 @@ namespace awesomeAlphabetThingy
             await Task.Delay(3000);
             Say("Let's begin!");
             await Task.Delay(2000);
+            this.currentlyPlaying = false;
             Next();
         }
         public async void Next()
@@ -97,6 +99,7 @@ namespace awesomeAlphabetThingy
             int index = rnd.Next(0, keys.Count - 1);
             letterBox.Text = "?";
             this.current = keys[index];
+            this.currentlyPlaying = true;
             Play(current);
         }
 
@@ -108,6 +111,7 @@ namespace awesomeAlphabetThingy
             await player.LoadFileAsync(mp3);
             player.Play(this.current.ToString() + ".mp3", 0.5);
             await Task.Delay(2000);
+            this.currentlyPlaying = false;
 
         }
 
@@ -135,6 +139,10 @@ namespace awesomeAlphabetThingy
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (this.currentlyPlaying)
+            {
+                return;
+            }
             var button = (Button)sender;
             checkLetter(button.Content.ToString().ToCharArray()[0]);
 
@@ -142,7 +150,7 @@ namespace awesomeAlphabetThingy
 
         public async void checkLetter(char letter)
         {
-
+            this.currentlyPlaying = true;
             letterBox.Text = letter.ToString();
             if (letter == Char.ToUpper(current))
             {
@@ -199,14 +207,17 @@ namespace awesomeAlphabetThingy
 
             }
 
-                await Task.Delay(3000);
-                Next();
-            }
-    
+
+            await Task.Delay(3000);
+            this.currentlyPlaying = false;
+            Next();
+        }
 
     private void playAgainButton_Click(object sender, RoutedEventArgs e)
         {
+            this.currentlyPlaying = true;
         Play(current);
+            this.currentlyPlaying = false;
         }
     }
 
