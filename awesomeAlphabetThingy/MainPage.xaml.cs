@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -23,32 +24,49 @@ namespace awesomeAlphabetThingy
     public sealed partial class MainPage : Page
     {
         Dictionary<char, int> letters;
-          MediaElement mediaElement = new MediaElement();
+        List<char> keys;
+        MediaElement mediaElement = new MediaElement();
+        char current;
         public MainPage()
         {
             this.InitializeComponent();
             Setup();
             Intro();
         }
-        public void Intro()
+        public async void Intro()
         {
-
+            await Task.Delay(2000);
+            Say("Hello and welcome to the awesome alphabet thingy!");
+            await Task.Delay(3000);
+            Say("Let us start learning some letters together!");
+            await Task.Delay(2000);
+            Say("Let us begin!");
+            await Task.Delay(2000);
+        }
+        public void Next()
+        {
+            Random rnd = new Random();
+            int index = rnd.Next(0, keys.Count - 1);
+            this.current = keys[index];
         }
         public void Setup()
         {
+            this.keys = new List<char>();
             this.letters = new Dictionary<char, int>
         {
-            {'a', 4}, {'b', 4}, {'c', 4}, {'d', 4}, {'e', 4}, {'f', 4}, {'g', 4}, {'h', 4}, {'i', 4}, {'j', 4},
-            {'k', 4}, {'l', 4}, {'m', 4}, {'n', 4}, {'o', 4}, {'p', 4}, {'q', 4}, {'r', 4}, {'s', 4}, {'t', 4},
-            {'u', 4}, {'v', 4}, {'w', 4}, {'x', 4}, {'y', 4}, {'z', 4}
+            {'a', 2}, {'b', 2}, {'c', 2}, {'d', 2}, {'e', 2}, {'f', 2}, {'g', 2}, {'h', 2}, {'i', 2}, {'j', 2},
+            {'k', 2}, {'l', 2}, {'m', 2}, {'n', 2}, {'o', 2}, {'p', 2}, {'q', 2}, {'r', 2}, {'s', 2}, {'t', 2},
+            {'u', 2}, {'v', 2}, {'w', 2}, {'x', 2}, {'y', 2}, {'z', 2}
         };
+            foreach (KeyValuePair<char, int> pair in this.letters)
+            {
+                keys.Add(pair.Key);
+            }
         }
-          private async void Button_Click(string letter)
+          public async void Say(string letter)
           {
                var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
                Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(letter);
-
-
                mediaElement.SetSource(stream, stream.ContentType);
                mediaElement.Play();
           }
