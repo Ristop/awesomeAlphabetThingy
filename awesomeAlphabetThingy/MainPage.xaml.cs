@@ -71,7 +71,18 @@ namespace awesomeAlphabetThingy
                mediaElement.Play();
           }
 
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            var button = (Button) sender;
 
+        }
 
-     }
+        public Boolean checkLetter(char letter) {
+            letterBox.Text = letter.ToString();
+            if(letter == current) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+    }
     }
