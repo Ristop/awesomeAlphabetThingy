@@ -31,10 +31,12 @@ namespace awesomeAlphabetThingy
         MediaElement mediaElement = new MediaElement();
         char current;
         int counter = 0;
+        Boolean playAgain;
+
         public MainPage()
         {
             this.InitializeComponent();
-            
+
             Setup();
             Intro();
         }
@@ -53,8 +55,14 @@ namespace awesomeAlphabetThingy
         {
             Random rnd = new Random();
             int index = rnd.Next(0, keys.Count - 1);
-            this.current = keys[index];
             letterBox.Text = "?";
+            this.current = keys[index];
+            Play(current);
+        }
+
+        public async void Play(char current)
+        {
+
             var mp3 = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///sounds/" + this.current.ToString() + ".mp3"));
             var player = new AudioPlayer();
             await player.LoadFileAsync(mp3);
@@ -62,6 +70,7 @@ namespace awesomeAlphabetThingy
             await Task.Delay(2000);
 
         }
+
         public void Setup()
         {
             this.keys = new List<char>();
@@ -76,42 +85,46 @@ namespace awesomeAlphabetThingy
                 keys.Add(pair.Key);
             }
         }
-          public async void Say(string letter)
-          {
-               var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
-               Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(letter);
-               mediaElement.SetSource(stream, stream.ContentType);
-               mediaElement.Play();
-          }
+        public async void Say(string letter)
+        {
+            var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
+            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(letter);
+            mediaElement.SetSource(stream, stream.ContentType);
+            mediaElement.Play();
+        }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
-            var button = (Button) sender;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
             checkLetter(button.Content.ToString().ToCharArray()[0]);
 
         }
 
-        public async void checkLetter(char letter) {
+        public async void checkLetter(char letter)
+        {
+
             letterBox.Text = letter.ToString();
-            if(letter == Char.ToUpper(current)) {
+            if (letter == Char.ToUpper(current))
+            {
                 if (letters[current] == 1)
                 {
                     letters.Remove(current);
                     keys.Remove(current);
                 }
-                else
-                {
+                else {
                     letters[current] -= 1;
                 }
-                if (this.counter <= 0){
+                if (this.counter <= 0)
+                {
                     this.counter = 1;
                     Say("Good!");
                 }
-                else if(this.counter == 1)
+                else if (this.counter == 1)
                 {
                     this.counter++;
                     Say("Super!");
                 }
-                else if(this.counter > 3)
+                else if (this.counter > 3)
                 {
                     this.counter++;
                     Say("Magnificent!");
@@ -121,9 +134,8 @@ namespace awesomeAlphabetThingy
                     this.counter++;
                     Say("You are on a roll!");
                 }
-                await Task.Delay(3000);
-                Next();
-            }else {
+            }
+            else {
                 if (this.counter >= 0)
                 {
                     this.counter = -1;
@@ -144,11 +156,21 @@ namespace awesomeAlphabetThingy
                     this.counter--;
                     Say("Don't be sad! You will get better");
                 }
-                await Task.Delay(3000);
-                Next();
+
             }
+
+            await Task.Delay(3000);
+            Next();
+        }
+    
+
+    private void playAgainButton_Click(object sender, RoutedEventArgs e)
+        {
+        Play(current);
         }
     }
+
+
     public class AudioPlayer
     {
         private AudioGraph _graph;
