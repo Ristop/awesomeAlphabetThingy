@@ -84,32 +84,32 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="buttonA" Click="buttonClick" Content="A" HorizontalAlignment="Left" Margin="39,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonB" Click="buttonClick" Content="B" HorizontalAlignment="Left" Margin="79,0,0,157" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonC" Click="buttonClick" Content="C" HorizontalAlignment="Left" Margin="119,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonD" Click="buttonClick" Content="D" HorizontalAlignment="Stretch" Margin="159,0,166,157" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
-        <Button x:Name="buttonE" Click="buttonClick" Content="E" HorizontalAlignment="Left" Margin="199,0,0,157" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonF" Click="buttonClick" Content="F" HorizontalAlignment="Left" Margin="239,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonG" Click="buttonClick" Content="G" HorizontalAlignment="Left" Margin="279,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonH" Click="buttonClick" Content="H" HorizontalAlignment="Left" Margin="39,0,0,120" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonI" Click="buttonClick" Content="I" HorizontalAlignment="Left" Margin="79,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonJ" Click="buttonClick" Content="J" HorizontalAlignment="Left" Margin="119,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonK" Click="buttonClick" Content="K" HorizontalAlignment="Stretch" Margin="159,0,166,120" VerticalAlignment="Bottom" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
-        <Button x:Name="buttonL" Click="buttonClick" Content="L" HorizontalAlignment="Left" Margin="199,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonM" Click="buttonClick" Content="M" HorizontalAlignment="Left" Margin="239,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonN" Click="buttonClick" Content="N" HorizontalAlignment="Left" Margin="279,0,0,120" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonO" Click="buttonClick" Content="O" HorizontalAlignment="Left" Margin="39,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonP" Click="buttonClick" Content="P" HorizontalAlignment="Left" Margin="79,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonQ" Click="buttonClick" Content="Q" HorizontalAlignment="Left" Margin="119,0,0,83" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonR" Click="buttonClick" Content="R" HorizontalAlignment="Stretch" Margin="159,0,166,83" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
-        <Button x:Name="buttonS" Click="buttonClick" Content="S" HorizontalAlignment="Left" Margin="199,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonT" Click="buttonClick" Content="T" HorizontalAlignment="Left" Margin="239,0,0,83" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
-        <Button x:Name="buttonU" Click="buttonClick" Content="U" HorizontalAlignment="Left" Margin="279,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonV" Click="buttonClick" Content="V" HorizontalAlignment="Left" Margin="79,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonX" Click="buttonClick" Content="X" HorizontalAlignment="Stretch" Margin="159,0,166,46" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
-        <Button x:Name="buttonY" Click="buttonClick" Content="Y" HorizontalAlignment="Left" Margin="199,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonZ" Click="buttonClick" Content="Z" HorizontalAlignment="Left" Margin="239,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        <Button x:Name="buttonW" Click="buttonClick" Content="W" HorizontalAlignment="Left" Margin="119,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonA" Click="Button_Click" Content="A" HorizontalAlignment="Left" Margin="39,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonB" Click="Button_Click" Content="B" HorizontalAlignment="Left" Margin="79,0,0,157" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
+        <Button x:Name="buttonC" Click="Button_Click" Content="C" HorizontalAlignment="Left" Margin="119,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonD" Click="Button_Click" Content="D" HorizontalAlignment="Stretch" Margin="159,0,166,157" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
+        <Button x:Name="buttonE" Click="Button_Click" Content="E" HorizontalAlignment="Left" Margin="199,0,0,157" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
+        <Button x:Name="buttonF" Click="Button_Click" Content="F" HorizontalAlignment="Left" Margin="239,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonG" Click="Button_Click" Content="G" HorizontalAlignment="Left" Margin="279,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonH" Click="Button_Click" Content="H" HorizontalAlignment="Left" Margin="39,0,0,120" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
+        <Button x:Name="buttonI" Click="Button_Click" Content="I" HorizontalAlignment="Left" Margin="79,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonJ" Click="Button_Click" Content="J" HorizontalAlignment="Left" Margin="119,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonK" Click="Button_Click" Content="K" HorizontalAlignment="Stretch" Margin="159,0,166,120" VerticalAlignment="Bottom" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
+        <Button x:Name="buttonL" Click="Button_Click" Content="L" HorizontalAlignment="Left" Margin="199,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonM" Click="Button_Click" Content="M" HorizontalAlignment="Left" Margin="239,0,0,120" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonN" Click="Button_Click" Content="N" HorizontalAlignment="Left" Margin="279,0,0,120" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
+        <Button x:Name="buttonO" Click="Button_Click" Content="O" HorizontalAlignment="Left" Margin="39,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonP" Click="Button_Click" Content="P" HorizontalAlignment="Left" Margin="79,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonQ" Click="Button_Click" Content="Q" HorizontalAlignment="Left" Margin="119,0,0,83" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
+        <Button x:Name="buttonR" Click="Button_Click" Content="R" HorizontalAlignment="Stretch" Margin="159,0,166,83" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
+        <Button x:Name="buttonS" Click="Button_Click" Content="S" HorizontalAlignment="Left" Margin="199,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonT" Click="Button_Click" Content="T" HorizontalAlignment="Left" Margin="239,0,0,83" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
+        <Button x:Name="buttonU" Click="Button_Click" Content="U" HorizontalAlignment="Left" Margin="279,0,0,83" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonV" Click="Button_Click" Content="V" HorizontalAlignment="Left" Margin="79,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonX" Click="Button_Click" Content="X" HorizontalAlignment="Stretch" Margin="159,0,166,46" VerticalAlignment="Bottom" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition"/>
+        <Button x:Name="buttonY" Click="Button_Click" Content="Y" HorizontalAlignment="Left" Margin="199,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonZ" Click="Button_Click" Content="Z" HorizontalAlignment="Left" Margin="239,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
+        <Button x:Name="buttonW" Click="Button_Click" Content="W" HorizontalAlignment="Left" Margin="119,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
         <TextBlock x:Name="letterBox" Text="A" RenderTransformOrigin="0.522,-2.504" TextAlignment="Center" TextWrapping="Wrap" Margin="39,125,46,231" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="266.667" FontFamily="Palatino Linotype" />
 
     </Grid>
