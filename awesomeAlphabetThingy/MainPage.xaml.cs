@@ -30,6 +30,7 @@ namespace awesomeAlphabetThingy
         List<char> keys;
         MediaElement mediaElement = new MediaElement();
         char current;
+        int counter = 0;
         public MainPage()
         {
             this.InitializeComponent();
@@ -44,7 +45,7 @@ namespace awesomeAlphabetThingy
             await Task.Delay(3000);
             Say("Let us start learning some letters together!");
             await Task.Delay(3000);
-            Say("Let us begin!");
+            Say("Let's begin!");
             await Task.Delay(2000);
             Next();
         }
@@ -92,8 +93,6 @@ namespace awesomeAlphabetThingy
         public async void checkLetter(char letter) {
             letterBox.Text = letter.ToString();
             if(letter == Char.ToUpper(current)) {
-                Say("Correct!");
-                await Task.Delay(3000);
                 if (letters[current] == 1)
                 {
                     letters.Remove(current);
@@ -103,9 +102,48 @@ namespace awesomeAlphabetThingy
                 {
                     letters[current] -= 1;
                 }
+                if (this.counter <= 0){
+                    this.counter = 1;
+                    Say("Good!");
+                }
+                else if(this.counter == 1)
+                {
+                    this.counter++;
+                    Say("Super!");
+                }
+                else if(this.counter > 3)
+                {
+                    this.counter++;
+                    Say("Magnificent!");
+                }
+                else
+                {
+                    this.counter++;
+                    Say("You are on a roll!");
+                }
+                await Task.Delay(3000);
                 Next();
             }else {
-                Say("Lets try this one again");
+                if (this.counter >= 0)
+                {
+                    this.counter = -1;
+                    Say("Incorrect!");
+                }
+                else if (this.counter == -1)
+                {
+                    this.counter--;
+                    Say("You have to keep practicing");
+                }
+                else if (this.counter < -3)
+                {
+                    this.counter--;
+                    Say("Let me help you get these right");
+                }
+                else
+                {
+                    this.counter--;
+                    Say("Don't be sad! You will get better");
+                }
                 await Task.Delay(3000);
                 Next();
             }
