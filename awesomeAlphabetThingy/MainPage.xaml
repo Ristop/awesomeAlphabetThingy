@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="awesomeAlphabetThingy.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,6 +9,8 @@
 
 
     <Page.Resources>
+        
+        
         <Style TargetType="Button">
             <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
             <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
@@ -25,6 +27,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid x:Name="RootGrid">
+                           
                             <Grid.BorderBrush>
                                 <ImageBrush Stretch="Fill"/>
                             </Grid.BorderBrush>
@@ -78,16 +81,19 @@
     </Page.Resources>
     
     
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="christmas.jpg" AlignmentY="Top" AlignmentX="Left"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Viewbox  Grid.Row="0">
+        <Viewbox  Grid.Row="0" MinHeight="200">
             <TextBlock x:Name="letterBox" Text="?" TextAlignment="Center" TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Viewbox>
-        <Viewbox Grid.Row="1">
-            <Grid>
+        <Viewbox Grid.Row="1" MaxWidth="500">
+            <Grid MaxWidth="500">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition/>
