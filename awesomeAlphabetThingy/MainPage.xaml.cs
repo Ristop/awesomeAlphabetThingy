@@ -151,7 +151,7 @@ namespace awesomeAlphabetThingy
         public async void checkLetter(char letter)
         {
             this.currentlyPlaying = true;
-            letterBox.Text = letter.ToString();
+            letterBox.Text = current.ToString().ToUpper();
             if (letter == Char.ToUpper(current))
             {
                 if (letters[current] == 1)
