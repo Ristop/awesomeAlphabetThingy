@@ -8,6 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Viewbox>
+            <TextBlock x:Name="letterBox" HorizontalAlignment="Center" Text="A" VerticalAlignment="Top" RenderTransformOrigin="0.522,-2.504" TextAlignment="Center" TextWrapping="Wrap" Height="24" Width="17" />
+        </Viewbox>
 
     </Grid>
 </Page>
