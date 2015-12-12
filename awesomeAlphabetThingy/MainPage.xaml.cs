@@ -53,7 +53,7 @@ namespace awesomeAlphabetThingy
             Random rnd = new Random();
             int index = rnd.Next(0, keys.Count - 1);
             this.current = keys[index];
-
+            letterBox.Text = "?";
             var mp3 = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///sounds/" + this.current.ToString() + ".mp3"));
             var player = new AudioPlayer();
             await player.LoadFileAsync(mp3);
