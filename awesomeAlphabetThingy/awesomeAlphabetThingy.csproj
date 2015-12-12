@@ -91,6 +91,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\BadgeLogo.scale-400.png" />
     <Content Include="Seasons\christmas.jpg" />
     <Content Include="Seasons\autumn.jpg" />
     <Content Include="Seasons\summer.jpg" />
