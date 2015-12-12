@@ -6,6 +6,9 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Audio;
+using Windows.Media.Render;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -31,6 +34,7 @@ namespace awesomeAlphabetThingy
         {
             this.InitializeComponent();
             Setup();
+            Next();
             Intro();
         }
         public async void Intro()
@@ -43,11 +47,17 @@ namespace awesomeAlphabetThingy
             Say("Let us begin!");
             await Task.Delay(2000);
         }
-        public void Next()
+        public async void Next()
         {
             Random rnd = new Random();
             int index = rnd.Next(0, keys.Count - 1);
             this.current = keys[index];
+            var mp3 = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///sounds/" + this.current.ToString() + ".mp3"));
+            var player = new AudioPlayer();
+            await player.LoadFileAsync(mp3);
+            player.Play(this.current.ToString() + ".mp3", 0.5);
+            await Task.Delay(2000);
+
         }
         public void Setup()
         {
@@ -85,4 +95,43 @@ namespace awesomeAlphabetThingy
             }
         }
     }
+    public class AudioPlayer
+    {
+        private AudioGraph _graph;
+        private Dictionary<string, AudioFileInputNode> _fileInputs = new Dictionary<string, AudioFileInputNode>();
+        private AudioDeviceOutputNode _deviceOutput;
+
+        public async Task LoadFileAsync(IStorageFile file)
+        {
+            if (_deviceOutput == null)
+            {
+                await CreateAudioGraph();
+            }
+
+            var fileInputResult = await _graph.CreateFileInputNodeAsync(file);
+
+            _fileInputs.Add(file.Name, fileInputResult.FileInputNode);
+            fileInputResult.FileInputNode.Stop();
+            fileInputResult.FileInputNode.AddOutgoingConnection(_deviceOutput);
+        }
+
+        public void Play(string key, double gain)
+        {
+            var sound = _fileInputs[key];
+            sound.OutgoingGain = gain;
+            sound.Seek(TimeSpan.Zero);
+            sound.Start();
+        }
+
+        private async Task CreateAudioGraph()
+        {
+            var settings = new AudioGraphSettings(AudioRenderCategory.Media);
+            var result = await AudioGraph.CreateAsync(settings);
+            _graph = result.Graph;
+            var deviceOutputNodeResult = await _graph.CreateDeviceOutputNodeAsync();
+            _deviceOutput = deviceOutputNodeResult.DeviceOutputNode;
+            _graph.ResetAllNodes();
+            _graph.Start();
+        }
     }
+}
