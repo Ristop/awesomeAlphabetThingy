@@ -35,7 +35,6 @@ namespace awesomeAlphabetThingy
             this.InitializeComponent();
             
             Setup();
-            Next();
             Intro();
         }
         public async void Intro()
@@ -47,12 +46,14 @@ namespace awesomeAlphabetThingy
             await Task.Delay(3000);
             Say("Let us begin!");
             await Task.Delay(2000);
+            Next();
         }
         public async void Next()
         {
             Random rnd = new Random();
             int index = rnd.Next(0, keys.Count - 1);
             this.current = keys[index];
+
             var mp3 = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///sounds/" + this.current.ToString() + ".mp3"));
             var player = new AudioPlayer();
             await player.LoadFileAsync(mp3);
@@ -88,12 +89,25 @@ namespace awesomeAlphabetThingy
 
         }
 
-        public Boolean checkLetter(char letter) {
+        public async void checkLetter(char letter) {
             letterBox.Text = letter.ToString();
-            if(letter == current) {
-                return true;
+            if(letter == Char.ToUpper(current)) {
+                Say("Correct!");
+                await Task.Delay(3000);
+                if (letters[current] == 1)
+                {
+                    letters.Remove(current);
+                    keys.Remove(current);
+                }
+                else
+                {
+                    letters[current] -= 1;
+                }
+                Next();
             }else {
-                return false;
+                Say("Lets try this one again");
+                await Task.Delay(3000);
+                Next();
             }
         }
     }
