@@ -33,6 +33,7 @@ namespace awesomeAlphabetThingy
         public MainPage()
         {
             this.InitializeComponent();
+            
             Setup();
             Next();
             Intro();
@@ -83,6 +84,7 @@ namespace awesomeAlphabetThingy
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             var button = (Button) sender;
+            checkLetter(button.Content.ToString().ToCharArray()[0]);
 
         }
 

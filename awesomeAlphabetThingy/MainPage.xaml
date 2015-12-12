@@ -80,10 +80,19 @@
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Viewbox  Grid.Row="0">
+            <TextBlock x:Name="letterBox" Text="?" TextAlignment="Center" TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Viewbox>
+        <Viewbox Grid.Row="1">
+            <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-      
+        
         <Button x:Name="buttonA" Click="Button_Click" Content="A" HorizontalAlignment="Left" Margin="39,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
         <Button x:Name="buttonB" Click="Button_Click" Content="B" HorizontalAlignment="Left" Margin="79,0,0,157" VerticalAlignment="Bottom" Width="35" RenderTransformOrigin="1.714,0.625" Grid.RowSpan="2"/>
         <Button x:Name="buttonC" Click="Button_Click" Content="C" HorizontalAlignment="Left" Margin="119,0,0,157" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
@@ -110,8 +119,8 @@
         <Button x:Name="buttonY" Click="Button_Click" Content="Y" HorizontalAlignment="Left" Margin="199,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
         <Button x:Name="buttonZ" Click="Button_Click" Content="Z" HorizontalAlignment="Left" Margin="239,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
         <Button x:Name="buttonW" Click="Button_Click" Content="W" HorizontalAlignment="Left" Margin="119,0,0,46" VerticalAlignment="Bottom" Width="35" Grid.RowSpan="2"/>
-        
-        <TextBlock x:Name="letterBox" Text="?" RenderTransformOrigin="0.522,-2.504" TextAlignment="Center" TextWrapping="Wrap" Margin="39,125,46,231" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="266.667"  />
+            </Grid>
+        </Viewbox>
         
 
     </Grid>
